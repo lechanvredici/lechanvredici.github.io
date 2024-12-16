@@ -46,16 +46,18 @@
         /* Menu horizontal */
 nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start; /* Alignement des éléments à gauche */
     background-color: #f4f4f4;
     padding: 10px 0;
-    width: 100%;  /* S'assurer que le menu occupe toute la largeur */
+    width: 100%;
+    box-sizing: border-box; /* Assure que tout le contenu est bien pris en compte dans la largeur */
 }
 
 nav a {
     text-decoration: none;
     color: #333;
     text-align: center;
+    padding: 0 10px; /* Ajoute de l'espace entre les éléments */
 }
 
 nav a img {
@@ -74,16 +76,16 @@ nav a span {
     nav {
         display: flex;
         flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne */
-        overflow-x: auto;  /* Rend le menu scrollable horizontalement */
+        overflow-x: scroll;  /* Ajoute un défilement horizontal */
         -webkit-overflow-scrolling: touch; /* Effet de défilement fluide pour iOS */
         padding: 10px 0;
         width: 100vw; /* Utilise toute la largeur de la fenêtre */
-        box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+        box-sizing: border-box;
+        scrollbar-width: thin; /* Évite une barre de défilement trop large */
     }
 
     nav a {
         flex: 0 0 auto; /* Les éléments gardent leur taille et ne se rétrécissent pas */
-        padding: 0 10px; /* Ajoute un petit espacement entre les liens */
     }
 
     nav a img {
@@ -95,6 +97,7 @@ nav a span {
         font-size: 12px; /* Réduction de la taille du texte */
     }
 }
+
 
         /* Bandeau promo */
         .promo {
