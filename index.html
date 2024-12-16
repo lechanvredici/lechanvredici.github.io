@@ -13,25 +13,33 @@
 
         /* Bandeau avec le logo */
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         }
+
         header img {
-            height: 150px;
-            margin-right: 20px;
+        height: 150px;
+        margin-right: 20px;
+        border-radius: 50%; /* Rend l'image circulaire */
+        border: 3px solid #000; /* Bordure noire */
+        object-fit: cover; /* Ajuste le contenu dans le cercle */
         }
+
         header h1 {
-            margin: 0;
-            font-size: 24px;
+        margin: 0;
+        font-size: 24px;
         }
-        header h3{
-            margin: 0;
-            text-align: right;
+
+        .contact-info {
+        display: flex;
+        flex-direction: column; /* Affiche les enfants en colonne */
+        text-align: right; /* Alignement du texte à droite */
         }
+
 
 
         /* Menu horizontal */
@@ -121,6 +129,21 @@
         background-color: #218838;
         }
 
+        /* Style du prix original barré */
+        .original-price {
+        text-decoration: line-through;
+        color: #888; /* Couleur grise pour indiquer un prix réduit */
+        margin-right: 10px;
+        }
+
+        /* Style du prix promotionnel */
+        .promo-price {
+        color: #e60000; /* Couleur rouge pour attirer l'attention */
+        font-weight: bold;
+        font-size: 1.2em; /* Augmente légèrement la taille pour le rendre plus visible */
+        }
+
+
 
 
         /* Liste des produits */
@@ -209,9 +232,12 @@
 
     <!-- Bandeau avec le logo -->
     <header>
-        <img src="logo.jpg" alt="Logo">
+        <img src="logo2.jpg" alt="Logo2">
         <h1>Le Chanvre D'ici</h1>
-        <h3>contact : num de telephone</h3>
+        <div class="contact-info">
+            <h3>contact : num de téléphone</h3>
+            <h3>mail : adresse mail</h3>
+        </div>
     </header>
 
     <!-- Menu horizontal avec catégories -->
@@ -239,54 +265,121 @@
     </nav>
 
    <!-- Bandeau promo --> 
-    <div class="promo">
-        <div class="promo-content">
-            <h2>PROMO DU MOMENT</h2> <!-- Titre du bandeau -->
-            <div class="promo-item" data-name="PROMO DU MOMENT Fleurs de chanvre" data-price="19.99">
-                <img src="fleursdechanvre.jpg" alt="fleursdechanvre"> 
-                <div class="promo-details">
-                    <h3>fleurs de chanvre</h3>
-                    <h3>10gr</h3>
-                    <p>Prix : 19,99 €</p>
-                    <button>Ajouter au panier</button>
-                </div>
+   <div class="promo">
+    <div class="promo-content">
+        <h2>PROMO DU MOMENT</h2> <!-- Titre du bandeau -->
+        <div class="promo-item" data-name="PROMO DU MOMENT Fleurs de chanvre" data-price="29.99">
+            <img src="fleursdechanvre.jpg" alt="fleursdechanvre"> 
+            <div class="promo-details">
+                <h3>Fleurs de chanvre</h3>
+                <h3>10gr</h3>
+                <p>
+                    <span class="original-price">39,99 €</span>
+                    <span class="promo-price">29,99 €</span>
+                </p>
+                <button>Ajouter au panier</button>
             </div>
         </div>
     </div>
+</div>
+
 
 
 
     <!-- Liste des produits -->
     <div class="products">
         <div class="product" data-name="Fleurs de chanvre2" data-price="19.99">
-            <img src="produit1.jpg" alt="Produit 1">
-            <h3>Produit 1</h3>
+            <img src="fleursdechanvre2.jpg" alt="fleursdechanvre2">
+            <h3>fleursdechanvre2</h3>
             <h3>2gr</h3>
             <p>Prix : 19,99 €</p>
             <button>Ajouter au panier</button>
         </div>
         <div class="product" data-name="Fleurs de chanvre3" data-price="29.99">
-            <img src="produit2.jpg" alt="Produit 2">
-            <h3>Produit 2</h3>
+            <img src="fleursdechanvre2.jpg" alt="fleursdechanvre2">
+            <h3>fleursdechanvre2</h3>
             <h3>5gr</h3>
             <p>Prix : 29,99 €</p>
             <button>Ajouter au panier</button>
         </div>
         <div class="product" data-name="Fleurs de chanvre4" data-price="39.99">
-            <img src="produit3.jpg" alt="Produit 3">
-            <h3>Produit 3</h3>
+            <img src="fleursdechanvre2.jpg" alt="fleursdechanvre2">
+            <h3>fleursdechanvre2</h3>
             <h3>10gr</h3>
             <p>Prix : 39,99 €</p>
             <button>Ajouter au panier</button>
         </div>
         <div class="product" data-name="Fleurs de chanvre5" data-price="49.99">
-            <img src="produit4.jpg" alt="Produit 4">
-            <h3>Produit 4</h3>
+            <img src="fleursdechanvre2.jpg" alt="fleursdechanvre2">
+            <h3>fleursdechanvre2</h3>
             <h3>20gr</h3>
             <p>Prix : 49,99 €</p>
             <button>Ajouter au panier</button>
         </div>
     </div>
+
+    <div class="products">
+        <div class="product" data-name="Fleurs de chanvre2" data-price="19.99">
+            <img src="fleursdechanvre3.jpg" alt="fleursdechanvre3">
+            <h3>fleursdechanvre3</h3>
+            <h3>2gr</h3>
+            <p>Prix : 19,99 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Fleurs de chanvre3" data-price="29.99">
+            <img src="fleursdechanvre3.jpg" alt="fleursdechanvre3">
+            <h3>fleursdechanvre3</h3>
+            <h3>5gr</h3>
+            <p>Prix : 29,99 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Fleurs de chanvre4" data-price="39.99">
+            <img src="fleursdechanvre3.jpg" alt="fleursdechanvre3">
+            <h3>fleursdechanvre3</h3>
+            <h3>10gr</h3>
+            <p>Prix : 39,99 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Fleurs de chanvre5" data-price="49.99">
+            <img src="fleursdechanvre3.jpg" alt="fleursdechanvre3">
+            <h3>fleursdechanvre3</h3>
+            <h3>20gr</h3>
+            <p>Prix : 49,99 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="product" data-name="Fleurs de chanvre2" data-price="19.99">
+            <img src="fleursdechanvre.jpg" alt="fleursdechanvre">
+            <h3>fleursdechanvre</h3>
+            <h3>2gr</h3>
+            <p>Prix : 19,99 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Fleurs de chanvre3" data-price="29.99">
+            <img src="fleursdechanvre.jpg" alt="fleursdechanvre">
+            <h3>fleursdechanvre</h3>
+            <h3>5gr</h3>
+            <p>Prix : 29,99 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Fleurs de chanvre4" data-price="39.99">
+            <img src="fleursdechanvre.jpg" alt="fleursdechanvre">
+            <h3>fleursdechanvre</h3>
+            <h3>10gr</h3>
+            <p>Prix : 39,99 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Fleurs de chanvre5" data-price="49.99">
+            <img src="fleursdechanvre.jpg" alt="fleursdechanvre">
+            <h3>fleursdechanvre</h3>
+            <h3>20gr</h3>
+            <p>Prix : 49,99 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+    </div>
+
 
     <!-- Affichage du panier -->
     <div id="panier">
