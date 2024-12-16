@@ -76,9 +76,11 @@ nav a span {
     nav {
         display: flex;
         flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne */
-        overflow-x: scroll;  /* Ajoute un défilement horizontal */
+        justify-content: flex-start; /* Aligne à gauche */
+        overflow-x: auto;  /* Ajoute un défilement horizontal */
+        gap: 10px;  /* Réduit l'espacement entre les produits */
         -webkit-overflow-scrolling: touch; /* Effet de défilement fluide pour iOS */
-        padding: 10px 0;
+        padding: 10px ;
         width: 100vw; /* Utilise toute la largeur de la fenêtre */
         box-sizing: border-box;
         scrollbar-width: thin; /* Évite une barre de défilement trop large */
