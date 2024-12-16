@@ -55,21 +55,22 @@
 
     <div class="contact-form">
         <h2>Contactez-nous</h2>
-        <form action="send_email.php" method="POST">
-            <label for="firstname">Prénom</label>
-            <input type="text" id="firstname" name="firstname" required>
-
-            <label for="lastname">Nom</label>
-            <input type="text" id="lastname" name="lastname" required>
-
-            <label for="phone">Numéro de téléphone</label>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Ex: 0123456789" required>
-
-            <label for="comment">Commentaire</label>
-            <textarea id="comment" name="comment" rows="5" required></textarea>
-
+        <form action="formulaire_contact.php" method="POST">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" required>
+        
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom" required>
+        
+            <label for="telephone">Numéro de téléphone :</label>
+            <input type="tel" id="telephone" name="telephone" required>
+        
+            <label for="commentaire">Commentaire :</label>
+            <textarea id="commentaire" name="commentaire" required></textarea>
+        
             <button type="submit">Envoyer</button>
         </form>
+        
     </div>
 
 </body>
