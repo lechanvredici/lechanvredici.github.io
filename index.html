@@ -44,50 +44,57 @@
 
 
         /* Menu horizontal */
-        nav {
-            display: flex;
-            justify-content: space-around;
-            background-color: #f4f4f4;
-            padding: 10px 0;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            text-align: center;
-        }
-        nav a img {
-            width: 100px;
-            height: 100px;
-            display: block;
-            margin: 0 auto;
-        }
-        nav a span {
-            font-size: 14px;
-        }
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    width: 100%;  /* S'assurer que le menu occupe toute la largeur */
+}
 
-        /* Media query pour smartphone (écrans < 768px) */
-        @media screen and (max-width: 768px) {
-            nav {
-            display: flex;
-            flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne */
-            overflow-x: auto;  /* Rend le menu scrollable horizontalement */
-            -webkit-overflow-scrolling: touch; /* Effet de défilement fluide pour iOS */
-            }
+nav a {
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+}
 
-            nav a {
-            flex: 0 0 auto; /* Les éléments gardent leur taille et ne se rétrécissent pas */
-            padding: 0 10px; /* Ajoute un petit espacement entre les liens */
-            }
+nav a img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+}
 
-            nav a img {
-            width: 80px; /* Réduction de la taille des images pour les petits écrans */
-            height: 80px;
-            }
+nav a span {
+    font-size: 14px;
+}
 
-            nav a span {
-            font-size: 12px; /* Réduction de la taille du texte */
-            }
-        }
+/* Media query pour smartphone (écrans < 768px) */
+@media screen and (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne */
+        overflow-x: auto;  /* Rend le menu scrollable horizontalement */
+        -webkit-overflow-scrolling: touch; /* Effet de défilement fluide pour iOS */
+        padding: 10px 0;
+        width: 100vw; /* Utilise toute la largeur de la fenêtre */
+        box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+    }
+
+    nav a {
+        flex: 0 0 auto; /* Les éléments gardent leur taille et ne se rétrécissent pas */
+        padding: 0 10px; /* Ajoute un petit espacement entre les liens */
+    }
+
+    nav a img {
+        width: 80px; /* Réduction de la taille des images pour les petits écrans */
+        height: 80px;
+    }
+
+    nav a span {
+        font-size: 12px; /* Réduction de la taille du texte */
+    }
+}
 
         /* Bandeau promo */
         .promo {
@@ -168,79 +175,92 @@
         font-size: 1.2em; /* Augmente légèrement la taille pour le rendre plus visible */
         }
 
-        /* Liste des produits */
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-            gap: 20px;
-        }
-        .product {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 200px;
-            text-align: center;
-            padding: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .product img {
-            max-width: 100%;
-            height: auto;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 10px;
-        }
-        .product h3 {
-            font-size: 16px;
-            margin: 10px 0;
-        }
-        .product p {
-            color: #333;
-            font-size: 14px;
-            margin: 5px 0;
-        }
-        .product button {
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .product button:hover {
-            background-color: #218838;
-        }
+        /* Liste des produits par défaut */
+.products {
+    display: flex;
+    flex-wrap: nowrap;  /* Empêche le retour à la ligne */
+    justify-content: flex-start;  /* Aligne les produits à gauche */
+    padding: 20px;
+    gap: 20px;
+    width: 100%;  /* S'assure que le conteneur occupe toute la largeur */
+    overflow-x: auto; /* Permet le défilement horizontal */
+    box-sizing: border-box;  /* Inclut padding et bordures dans la largeur */
+}
 
-        /* Media query pour smartphone (écrans < 768px) */
-        @media screen and (max-width: 768px) {
-            .products {
-            display: flex;
-            flex-wrap: nowrap; /* Empêche le retour à la ligne */
-            overflow-x: auto;  /* Défilement horizontal */
-            gap: 10px; /* Réduit l'espacement entre les produits */
-            padding: 10px; /* Moins de padding sur mobile */
-            -webkit-overflow-scrolling: touch; /* Défilement fluide pour iOS */
-            }
+.product {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-            .product {
-            flex: 0 0 auto; /* Taille fixe pour chaque produit */
-            width: 150px; /* Réduit la largeur des produits pour mobile */
-            }
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
 
-            .product h3 {
-            font-size: 14px; /* Taille du texte plus petite */
-            }
+.product h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
 
-            .product p {
-            font-size: 12px;
-            }
+.product p {
+    color: #333;
+    font-size: 14px;
+    margin: 5px 0;
+}
 
-            .product button {
-            padding: 8px 12px; /* Réduction de la taille du bouton */
-            font-size: 12px;
-            }
-        }
+.product button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.product button:hover {
+    background-color: #218838;
+}
+
+/* Media query pour smartphone (écrans < 768px) */
+@media screen and (max-width: 768px) {
+    .products {
+        display: flex;
+        flex-wrap: nowrap;  /* Empêche le retour à la ligne */
+        justify-content: flex-start; /* Aligne à gauche */
+        overflow-x: auto;  /* Permet le défilement horizontal */
+        gap: 10px;  /* Réduit l'espacement entre les produits */
+        padding: 10px;  /* Moins de padding sur mobile */
+        -webkit-overflow-scrolling: touch; /* Défilement fluide pour iOS */
+        width: 100vw; /* Utilise 100% de la largeur de la fenêtre de l'écran */
+        box-sizing: border-box;  /* S'assure que padding est inclus dans la largeur totale */
+    }
+
+    .product {
+        flex: 0 0 auto;  /* Fixe la taille des éléments */
+        width: 150px;  /* Réduit la largeur des produits pour mobile */
+    }
+
+    .product h3 {
+        font-size: 14px;  /* Réduit la taille du texte pour mobile */
+    }
+
+    .product p {
+        font-size: 12px;
+    }
+
+    .product button {
+        padding: 8px 12px;  /* Réduction de la taille du bouton */
+        font-size: 12px;
+    }
+}
+
 
         /* panier */
         .cart {
