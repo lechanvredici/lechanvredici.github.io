@@ -18,6 +18,7 @@
             padding: 10px 20px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
         header img {
             height: 150px;
@@ -27,6 +28,11 @@
             margin: 0;
             font-size: 24px;
         }
+        header h3{
+            margin: 0;
+            text-align: right;
+        }
+
 
         /* Menu horizontal */
         nav {
@@ -163,6 +169,7 @@
 
         /* panier */
         .cart {
+        margin: 20px auto;
         margin-top: 20px;
         padding: 10px;
         border: 1px solid #ddd;
@@ -189,6 +196,13 @@
         font-weight: bold;
         margin-top: 10px;
         }
+
+        /* Centrer le conteneur du bouton Google Pay */
+        .gpay-button-container {
+            margin: 20px auto; /* Marge automatique pour centrer horizontalement */
+            max-width: 300px;  /* Vous pouvez ajuster la largeur selon le besoin */
+            text-align: center; /* Optionnel, mais utile pour centrer le contenu à l'intérieur */
+  }
     </style>
 </head>
 <body>
@@ -197,6 +211,7 @@
     <header>
         <img src="logo.jpg" alt="Logo">
         <h1>Le Chanvre D'ici</h1>
+        <h3>contact : num de telephone</h3>
     </header>
 
     <!-- Menu horizontal avec catégories -->
@@ -217,6 +232,10 @@
             <img src="graines.jpg" alt="graines">
             <span>Graines</span>
         </a>
+        <a href="#panier">
+            <img src="panier.jpg" alt="panier">
+            <span>panier</span>
+        </a>
     </nav>
 
    <!-- Bandeau promo --> 
@@ -227,6 +246,7 @@
                 <img src="fleursdechanvre.jpg" alt="fleursdechanvre"> 
                 <div class="promo-details">
                     <h3>fleurs de chanvre</h3>
+                    <h3>10gr</h3>
                     <p>Prix : 19,99 €</p>
                     <button>Ajouter au panier</button>
                 </div>
@@ -241,83 +261,106 @@
         <div class="product" data-name="Fleurs de chanvre2" data-price="19.99">
             <img src="produit1.jpg" alt="Produit 1">
             <h3>Produit 1</h3>
+            <h3>2gr</h3>
             <p>Prix : 19,99 €</p>
             <button>Ajouter au panier</button>
         </div>
         <div class="product" data-name="Fleurs de chanvre3" data-price="29.99">
             <img src="produit2.jpg" alt="Produit 2">
             <h3>Produit 2</h3>
+            <h3>5gr</h3>
             <p>Prix : 29,99 €</p>
             <button>Ajouter au panier</button>
         </div>
         <div class="product" data-name="Fleurs de chanvre4" data-price="39.99">
             <img src="produit3.jpg" alt="Produit 3">
             <h3>Produit 3</h3>
+            <h3>10gr</h3>
             <p>Prix : 39,99 €</p>
             <button>Ajouter au panier</button>
         </div>
         <div class="product" data-name="Fleurs de chanvre5" data-price="49.99">
             <img src="produit4.jpg" alt="Produit 4">
             <h3>Produit 4</h3>
+            <h3>20gr</h3>
             <p>Prix : 49,99 €</p>
             <button>Ajouter au panier</button>
         </div>
     </div>
 
     <!-- Affichage du panier -->
-    <div class="cart">
-        <h2>Panier</h2>
-        <ul id="cart-list">
-            <!-- Les produits ajoutés apparaîtront ici -->
-        </ul>
-        <p id="cart-total">Total : 0,00 €</p>
+    <div id="panier">
+        <div class="cart">
+            <h2>Panier</h2>
+            <ul id="cart-list">
+                <!-- Les produits ajoutés apparaîtront ici -->
+            </ul>
+            <p id="cart-total">Total : 0,00 €</p>
+        </div>
     </div>
 
-    <div id="gpay-container"></div>
+    <div id="gpay-container" class="gpay-button-container"></div>
 
     <script>
         // Initialisation du panier
-        const cart = [];
-    
-        // Fonction pour mettre à jour l'affichage du panier et récupérer le total
-        function updateCartDisplay() {
-            const cartList = document.getElementById('cart-list');
-            const cartTotal = document.getElementById('cart-total');
-    
-            // Vide la liste actuelle
-            cartList.innerHTML = '';
-    
-            // Ajoute chaque produit dans le panier à la liste
-            let total = 0;
-            cart.forEach((item) => {
-                const li = document.createElement('li');
-                li.textContent = `${item.name} - ${item.price.toFixed(2)} €`;
-                cartList.appendChild(li);
-                total += item.price;
-            });
-    
-            // Met à jour le total
-            cartTotal.textContent = `Total : ${total.toFixed(2)} €`;
-    
-            // Met à jour la variable globale pour le total du panier
-            window.cartTotalPrice = total.toFixed(2); // Store the total in a global variable
-        }
-    
-        // Écouteur d'événements pour les boutons "Ajouter au panier"
-        document.querySelectorAll('button').forEach(button => {
-            button.addEventListener('click', (event) => {
-                // Trouve l'élément parent avec les données du produit
-                const productElement = event.target.closest('.product, .promo-item');
-                const productName = productElement.getAttribute('data-name');
-                const productPrice = parseFloat(productElement.getAttribute('data-price'));
-    
-                // Ajoute le produit au panier
-                cart.push({ name: productName, price: productPrice });
-    
-                // Met à jour l'affichage du panier
-                updateCartDisplay();
-            });
+const cart = [];
+
+// Fonction pour mettre à jour l'affichage du panier et récupérer le total
+function updateCartDisplay() {
+    const cartList = document.getElementById('cart-list');
+    const cartTotal = document.getElementById('cart-total');
+
+    // Vide la liste actuelle
+    cartList.innerHTML = '';
+
+    // Ajoute chaque produit dans le panier à la liste
+    let total = 0;
+    cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price.toFixed(2)} €`;
+
+        // Ajout d'un bouton de suppression
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Supprimer';
+        deleteButton.addEventListener('click', () => {
+            removeItemFromCart(index); // Supprime l'élément du panier
         });
+
+        // Ajoute le bouton de suppression à l'élément de la liste
+        li.appendChild(deleteButton);
+        cartList.appendChild(li);
+        total += item.price;
+    });
+
+    // Met à jour le total
+    cartTotal.textContent = `Total : ${total.toFixed(2)} €`;
+
+    // Met à jour la variable globale pour le total du panier
+    window.cartTotalPrice = total.toFixed(2); // Store the total in a global variable
+}
+
+// Fonction pour supprimer un article du panier
+function removeItemFromCart(index) {
+    cart.splice(index, 1); // Supprime l'élément à l'index spécifié
+    updateCartDisplay(); // Met à jour l'affichage du panier après suppression
+}
+
+// Écouteur d'événements pour les boutons "Ajouter au panier"
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', (event) => {
+        // Trouve l'élément parent avec les données du produit
+        const productElement = event.target.closest('.product, .promo-item');
+        const productName = productElement.getAttribute('data-name');
+        const productPrice = parseFloat(productElement.getAttribute('data-price'));
+
+        // Ajoute le produit au panier
+        cart.push({ name: productName, price: productPrice });
+
+        // Met à jour l'affichage du panier
+        updateCartDisplay();
+    });
+});
+
 
     </script>
     <script type="text/javascript" src="main.js"></script>
