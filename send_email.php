@@ -1,44 +1,33 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les données du formulaire
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $telephone = $_POST['telephone'];
+    $commentaire = $_POST['commentaire'];
 
-// Inclure PHPMailer
-require 'send_email.php'; // Assurez-vous que le chemin est correct si vous avez téléchargé PHPMailer
+    // Destinataire de l'email
+    $to = "Lechanvredici@gmail.com";
 
-// Récupérer les données du formulaire
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$phone = $_POST['phone'];
-$comment = $_POST['comment'];
+    // Sujet de l'email
+    $subject = "Formulaire de contact - $nom $prenom";
 
-// Créer une nouvelle instance de PHPMailer
-$mail = new PHPMailer(true);
+    // Corps du message
+    $message = "Nom: $nom\n";
+    $message .= "Prénom: $prenom\n";
+    $message .= "Téléphone: $telephone\n";
+    $message .= "Commentaire: $commentaire\n";
 
-try {
-    // Paramètres du serveur SMTP
-    $mail->isSMTP();                                           // Envoyer via SMTP
-    $mail->Host       = 'smtp.gmail.com';                        // Serveur SMTP de Gmail
-    $mail->SMTPAuth   = true;                                    // Activer l'authentification SMTP
-    $mail->Username   = 'votre_email@gmail.com';                 // Votre adresse email Gmail
-    $mail->Password   = 'votre_mot_de_passe';                    // Votre mot de passe Gmail
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;          // Chiffrement TLS
-    $mail->Port       = 587;                                     // Port SMTP (587 pour TLS)
-
-    // Destinataire
-    $mail->setFrom('votre_email@gmail.com', 'Nom de votre site');
-    $mail->addAddress('Lechanvredici@gmail.com');                 // L'adresse de destination
-
-    // Contenu de l'email
-    $mail->isHTML(true);                                         // Configurer l'email au format HTML
-    $mail->Subject = 'Nouveau message de contact';
-    $mail->Body    = "<h3>Message reçu de {$firstname} {$lastname}</h3>
-                      <p><strong>Téléphone:</strong> {$phone}</p>
-                      <p><strong>Commentaire:</strong><br>{$comment}</p>";
+    // En-têtes de l'email
+    $headers = "From: $nom <$nom@domain.com>\r\n";
+    $headers .= "Reply-To: $nom <$nom@domain.com>\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
     // Envoi de l'email
-    $mail->send();
-    echo 'Le message a été envoyé avec succès.';
-} catch (Exception $e) {
-    echo "L'email n'a pas pu être envoyé. Erreur : {$mail->ErrorInfo}";
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Votre message a été envoyé avec succès.";
+    } else {
+        echo "Il y a eu une erreur lors de l'envoi de votre message.";
+    }
 }
 ?>
