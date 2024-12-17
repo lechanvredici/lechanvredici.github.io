@@ -12,18 +12,43 @@
             padding: 0;
         }
 
+        /* Bandeau de contact */
+
+        .contact-info {
+        background-color: #fff;
+        color: #333;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+        /*flex-direction: column; /* Affiche les enfants en colonne */
+        text-align: right; /* Alignement du texte à droite */
+        height: auto;
+        }
+
+        .contact-info h3 {
+        margin: 0; /* Supprime les marges autour du titre */
+        font-size: 14px; /* Ajuste la taille du texte si nécessaire */
+        }
+        
+        .contact-info a {
+        margin: 0;
+        font-size: 12px; /* Réduction de la taille du lien */
+        }
+
         /* Bandeau avec le logo */
         header {
         background-color: #333;
         color: #fff;
-        padding: 10px 20px;
+        padding: 5px 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         }
 
         header img {
-        height: 150px;
+        height: 100px;
         margin-right: 20px;
         border-radius: 50%; /* Rend l'image circulaire */
         border: 3px solid #000; /* Bordure noire */
@@ -35,11 +60,61 @@
         font-size: 24px;
         }
 
-        .contact-info {
-        display: flex;
-        flex-direction: column; /* Affiche les enfants en colonne */
-        text-align: right; /* Alignement du texte à droite */
-        }
+        /* Style du bandeau */
+.scrolling-banner {
+    width: 100%; /* Prend toute la largeur */
+    overflow: hidden; /* Cache le contenu qui dépasse */
+    background-color: #fe0202; /* Couleur de fond du bandeau */
+    border: 1px solid #333; /* Bordure pour l'apparence */
+    height: 40px; /* Hauteur du bandeau */
+    display: flex;
+    align-items: center; /* Centre verticalement le contenu */
+    position: relative;
+}
+
+/* Contenu défilant */
+.scrolling-content {
+    display: flex;
+    width: max-content; /* Permet de s'assurer que tout le texte est aligné sur une ligne */
+    animation: scroll-loop 15s linear infinite; /* Animation fluide infinie */
+}
+
+/* Éléments de texte individuels */
+.scrolling-content span {
+    flex-shrink: 0; /* Empêche les éléments de rétrécir */
+    white-space: nowrap; /* Empêche les retours à la ligne */
+    font-size: 16px;
+    padding: 0 20px; /* Espacement entre les éléments */
+    color: #333;
+}
+
+/* Animation pour faire défiler en boucle */
+@keyframes scroll-loop {
+    0% {
+        transform: translateX(100%); /* Départ hors de l'écran à droite */
+    }
+    100% {
+        transform: translateX(-100%); /* Finit hors de l'écran à gauche */
+    }
+}
+
+/* Media Query pour les écrans de moins de 768px */
+@media (max-width: 768px) {
+    .scrolling-banner {
+        height: 30px; /* Réduction de la hauteur du bandeau */
+    }
+
+    .scrolling-content span {
+        font-size: 14px; /* Réduction de la taille du texte */
+        padding: 0 10px; /* Réduction de l'espacement entre les éléments */
+    }
+
+    .scrolling-content {
+        animation: scroll-loop 15s linear infinite; /* Ralentissement du défilement */
+    }
+}
+
+
 
 
 
@@ -102,44 +177,52 @@ nav a span {
 
 
         /* Bandeau promo */
-        .promo {
-        background-color: orange; /* Fond orange pour le bandeau */
-        display: flex;
-        justify-content: center; /* Centre le contenu horizontalement */
-        align-items: center; /* Centre le contenu verticalement */
-        height: 250px; /* Ajuster la hauteur pour inclure le titre */
-        flex-direction: column; /* Aligne le contenu verticalement */
-        }
+.promo {
+    background-color: orange; /* Fond orange pour le bandeau */
+    display: flex;
+    justify-content: center; /* Centre le titre horizontalement */
+    align-items: center; /* Centre le titre verticalement */
+    height: 50px; /* Hauteur du bandeau */
+    color: white; /* Couleur du texte */
+    font-size: 16px; /* Taille du texte */
+    font-weight: bold; /* Texte en gras */
+}
 
-        .promo-content {
-        text-align: center; /* Centre tout le contenu horizontalement */
-        }
+.promo h2 {
+    margin: 0; /* Retirer les marges par défaut autour du titre */
+}
 
-        .promo-content h2 {
-        font-size: 24px; /* Taille du texte pour 'PROMO DU MOMENT' */
-        margin: 0 0 10px 0; /* Espacement en bas */
-        font-weight: bold; /* Met le texte en gras */
-        color: white; /* Couleur du texte */
-        }
+/* Bandeau promo */
+.promo2 {
+    background-color: orange; /* Fond orange pour le bandeau */
+    position: relative; /* Nécessaire pour positionner les flèches */
+    overflow: hidden; /* Masque les images qui débordent */
+    height: 170px; /* Hauteur du bandeau */
+}
 
-        .promo-item {
-        display: flex;
-        align-items: center; /* Aligne l'image et le contenu verticalement */
-        gap: 15px; /* Espace entre l'image et le contenu */
-        padding: 10px;
-        background-color: white; /* Fond blanc autour des éléments */
-        border: 1px solid #ddd; /* Optionnel, pour délimiter visuellement */
-        border-radius: 5px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel, ajoute une ombre */
-        }
+/* Carrousel */
+.carousel {
+    display: flex;
+    transition: transform 1s ease; /* Animation fluide pour le défilement */
+    width: 300%; /* Pour trois images */
+    justify-content: center; /* Centre horizontalement tout le carrousel */
+}
 
-        .promo-item img {
-        max-width: 150px; /* Taille de l'image */
-        height: auto;
-        border-radius: 5px; /* Coins arrondis */
-        }
+.carousel-item {
+    flex: 1; /* Chaque image occupe un tiers de la largeur */
+    height: 100%;
+    display: flex; /* Active Flexbox pour l'élément */
+    justify-content: center; /* Centre l'image horizontalement */
+    align-items: center; /* Centre l'image verticalement */
+}
 
-        .promo-details {
+.carousel-item img {
+    width: 150px; /* L'image prend toute la largeur de l'élément */
+    height: 150px; /* Garde le ratio de l'image */
+    display: block; /* Supprime les espaces sous les images */
+}
+
+.promo-details {
         display: flex;
         flex-direction: column; /* Aligne le texte et le bouton verticalement */
         }
@@ -179,6 +262,32 @@ nav a span {
         font-weight: bold;
         font-size: 1.2em; /* Augmente légèrement la taille pour le rendre plus visible */
         }
+
+/* Boutons de navigation */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+/* Pause au survol */
+.carousel:hover {
+    animation-play-state: paused;
+}
 
         /* Liste des produits par défaut */
 .products {
@@ -307,22 +416,39 @@ nav a span {
 </head>
 <body>
 
+    <!-- Bandeau avec le contact -->
+    
+    <div class="contact-info">
+        <h3>contact : num de téléphone</h3>
+        <a href="mailto:Lechanvredici@gmail.com?subject=Demande d'information&body=nom:%0Aprénom:%0Anuméro%20de%20téléphone:">Lechanvredici@gmail.com</a>
+    </div>
+    
+
     <!-- Bandeau avec le logo -->
     <header>
         <img src="logo2.jpg" alt="Logo2">
         <h1>Le Chanvre D'ici</h1>
-        <div class="contact-info">
-            <h3>contact : num de téléphone</h3>
-            <a href="mailto:Lechanvredici@gmail.com?subject=Demande d'information&body=nom:%0Aprénom:%0Anuméro%20de%20téléphone:">Lechanvredici@gmail.com</a>
-
-        </div>
     </header>
+
+    <!-- Bandeau avec texte défilant -->
+    <div class="scrolling-banner">
+        <div class="scrolling-content">
+            <span>- - - - Frais de port offert à partir de 30€ - - - -</span>
+            <span><a href="quisommesnous.html" class="scrolling-link">- - - - Qui sommes nous - - - -</a></span>
+            <span>- - - - Troisième texte qui défile3 - - - -</span>
+        </div>
+    </div>
+
 
     <!-- Menu horizontal avec catégories -->
     <nav>
         <a href="#">
             <img src="fleursdechanvre.jpg" alt="Fleurs de Chanvre">
             <span>Fleurs de Chanvre</span>
+        </a>
+        <a href="#panier">
+            <img src="panier.jpg" alt="panier">
+            <span>Panier</span>
         </a>
         <a href="#">
             <img src="pollen.jpg" alt="Pollen">
@@ -333,21 +459,26 @@ nav a span {
             <span>Infusions</span>
         </a>
         <a href="#">
+            <img src="accessoires.jpg" alt="accessoires">
+            <span>Accessoires</span>
+        </a>
+        <a href="#panier">
             <img src="graines.jpg" alt="graines">
             <span>Graines</span>
         </a>
-        <a href="#panier">
-            <img src="panier.jpg" alt="panier">
-            <span>panier</span>
-        </a>
     </nav>
 
-   <!-- Bandeau promo --> 
-   <div class="promo">
-    <div class="promo-content">
-        <h2>PROMO DU MOMENT</h2> <!-- Titre du bandeau -->
-        <div class="promo-item" data-name="PROMO DU MOMENT Fleurs de chanvre" data-price="29.99">
-            <img src="fleursdechanvre.jpg" alt="fleursdechanvre"> 
+    <!-- Bandeau promo -->
+<div class="promo">
+    <h2>PROMO DU MOMENT</h2> <!-- Titre du bandeau -->
+</div>
+
+<!-- Bandeau promo avec carrousel -->
+<div class="promo2">
+    <div class="carousel">
+        <!-- Slide 1 -->
+        <div class="carousel-item">
+            <img src="fleursdechanvre.jpg" alt="fleursdechanvre">
             <div class="promo-details">
                 <h3>Fleurs de chanvre</h3>
                 <h3>10gr</h3>
@@ -358,10 +489,37 @@ nav a span {
                 <button>Ajouter au panier</button>
             </div>
         </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <img src="pack.jpg" alt="pack1">
+            <div class="promo-details">
+                <h3>Pack petit curieux</h3>
+                <h3>10gr</h3>
+                <p>
+                    <span class="original-price">39,99 €</span>
+                    <span class="promo-price">29,99 €</span>
+                </p>
+                <button>Ajouter au panier</button>
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+            <img src="pack.jpg" alt="pack2">
+            <div class="promo-details">
+                <h3>Pack grand curieux</h3>
+                <h3>50gr</h3>
+                <p>
+                    <span class="original-price">39,99 €</span>
+                    <span class="promo-price">29,99 €</span>
+                </p>
+                <button>Ajouter au panier</button>
+            </div>
+        </div>
     </div>
+    <!-- Navigation buttons -->
+    <button class="carousel-control prev">❮</button>
+    <button class="carousel-control next">❯</button>
 </div>
-
-
 
 
     <!-- Liste des produits -->
@@ -540,5 +698,58 @@ document.querySelectorAll('button').forEach(button => {
       onload="onGooglePayLoaded()">
     </script>
     
+    <script>
+   // Sélectionner les éléments nécessaires
+const prevButton = document.querySelector('.carousel-control.prev');
+const nextButton = document.querySelector('.carousel-control.next');
+const carousel = document.querySelector('.carousel');
+const carouselItems = document.querySelectorAll('.carousel-item');
+
+// Variable pour suivre l'index actuel de l'image
+let currentIndex = 0;
+
+// Fonction pour passer à la précédente image
+function moveToPrevious() {
+    if (currentIndex === 0) {
+        currentIndex = carouselItems.length - 1; // Revenir à la dernière image
+    } else {
+        currentIndex--;
+    }
+    updateCarousel();
+}
+
+// Fonction pour passer à l'image suivante
+function moveToNext() {
+    if (currentIndex === carouselItems.length - 1) {
+        currentIndex = 0; // Revenir à la première image
+    } else {
+        currentIndex++;
+    }
+    updateCarousel();
+}
+
+// Fonction pour mettre à jour le carrousel en fonction de l'index actuel
+function updateCarousel() {
+    const offset = -currentIndex * 100 / carouselItems.length; // Calcul de l'offset
+    carousel.style.transform = `translateX(${offset}%)`;
+}
+
+// Ajouter des événements aux boutons de navigation
+prevButton.addEventListener('click', moveToPrevious);
+nextButton.addEventListener('click', moveToNext);
+
+// Pause au survol
+carousel.addEventListener('mouseover', () => clearInterval(autoSlide));
+carousel.addEventListener('mouseout', () => {
+    autoSlide = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    }, slideInterval);
+});
+
+// Défilement automatique toutes les 5 secondes
+setInterval(moveToNext, 9000);
+
+</script>
 </body>
 </html>
