@@ -38,27 +38,44 @@
         }
 
         /* Bandeau avec le logo */
-        header {
-        background-color: #333;
-        color: #fff;
-        padding: 5px 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        }
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligne les éléments au début */
+}
 
-        header img {
-        height: 100px;
-        margin-right: 20px;
-        border-radius: 50%; /* Rend l'image circulaire */
-        border: 3px solid #000; /* Bordure noire */
-        object-fit: cover; /* Ajuste le contenu dans le cercle */
-        }
+header img {
+    height: 100px;
+    margin-right: 20px;
+    border-radius: 50%; /* Rend l'image circulaire */
+    border: 3px solid #000; /* Bordure noire */
+    object-fit: cover; /* Ajuste le contenu dans le cercle */
+}
 
-        header h1 {
-        margin: 0;
-        font-size: 24px;
-        }
+/* Pour aligner les textes à droite de la page */
+header .text-container {
+    display: flex;
+    flex-direction: column; /* Empile les textes l'un sous l'autre */
+    justify-content: center; /* Centrer verticalement les textes */
+    margin-left: auto; /* Pousse le bloc de texte complètement à droite */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+header h3 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+
 
         /* Style du bandeau */
 .scrolling-banner {
@@ -145,6 +162,9 @@ nav a img {
 nav a span {
     font-size: 14px;
 }
+nav li {
+    list-style-type: none; /* Supprime les puces */
+}
 
 /* Media query pour smartphone (écrans < 768px) */
 @media screen and (max-width: 768px) {
@@ -172,6 +192,9 @@ nav a span {
 
     nav a span {
         font-size: 12px; /* Réduction de la taille du texte */
+    }
+    nav li {
+    list-style-type: none; /* Supprime les puces */
     }
 }
 
@@ -289,6 +312,22 @@ nav a span {
     animation-play-state: paused;
 }
 
+
+/* Zone de contenu */
+#main-content {
+    padding: 20px;
+}
+
+#product-list {
+    display: block;
+}
+
+/* Section de produit dynamique */
+.product-detail {
+    /*display: none;*/
+    margin-top: 20px;
+}
+
         /* Liste des produits par défaut */
 .products {
     display: flex;
@@ -341,6 +380,9 @@ nav a span {
 .product button:hover {
     background-color: #218838;
 }
+.product li {
+    list-style-type: none; /* Supprime les puces */
+}
 
 /* Media query pour smartphone (écrans < 768px) */
 @media screen and (max-width: 768px) {
@@ -373,6 +415,9 @@ nav a span {
         padding: 8px 12px;  /* Réduction de la taille du bouton */
         font-size: 12px;
     }
+    .product li {
+    list-style-type: none; /* Supprime les puces */
+}
 }
 
 
@@ -427,45 +472,61 @@ nav a span {
     <!-- Bandeau avec le logo -->
     <header>
         <img src="logo2.jpg" alt="Logo2">
-        <h1>Le Chanvre D'ici</h1>
+        <div class="text-container">
+            <h1>Le Chanvre D'ici</h1>
+            <h3>Agriculteurs - Producteurs en France</h3>
+        </div>
     </header>
+    
 
     <!-- Bandeau avec texte défilant -->
     <div class="scrolling-banner">
         <div class="scrolling-content">
             <span>- - - - Frais de port offert à partir de 30€ - - - -</span>
             <span><a href="quisommesnous.html" class="scrolling-link">- - - - Qui sommes nous - - - -</a></span>
-            <span>- - - - Troisième texte qui défile3 - - - -</span>
+            <span>- - - - Nos produits agricoles à la vente sont produits sur le territoire Français aucune revente de marchandises de l'autre bout du monde - - - -</span>
         </div>
     </div>
 
 
     <!-- Menu horizontal avec catégories -->
     <nav>
-        <a href="#">
-            <img src="fleursdechanvre.jpg" alt="Fleurs de Chanvre">
-            <span>Fleurs de Chanvre</span>
-        </a>
+        <li>
+            <a href="javascript:void(0);" onclick="window.location.href='index.html';">
+                <img src="fleursdechanvre.jpg" alt="Fleurs de Chanvre">
+                <span>Fleurs de Chanvre</span>
+            </a>
+        </li>
+        <li>
         <a href="#panier">
             <img src="panier.jpg" alt="panier">
             <span>Panier</span>
         </a>
-        <a href="#">
-            <img src="pollen.jpg" alt="Pollen">
-            <span>Pollen</span>
-        </a>
-        <a href="#">
-            <img src="infusions.jpg" alt="infusions">
-            <span>Infusions</span>
-        </a>
-        <a href="#">
-            <img src="accessoires.jpg" alt="accessoires">
-            <span>Accessoires</span>
-        </a>
-        <a href="#panier">
-            <img src="graines.jpg" alt="graines">
-            <span>Graines</span>
-        </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="window.location.href='pollen.html';">
+                <img src="pollen.jpg" alt="pollen">
+                <span>Pollen</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="window.location.href='infusions.html';">
+                <img src="infusions.jpg" alt="infusions">
+                <span>Infusions</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="window.location.href='accessoires.html';">
+                <img src="accessoires.jpg" alt="accessoires" class="product-image">
+                <span>Accessoires</span>
+            </a>
+        </li>        
+        <li>
+            <a href="javascript:void(0);" onclick="window.location.href='graines.html';">
+                <img src="graines.jpg" alt="graines">
+                <span>Graines</span>
+            </a>
+        </li>
     </nav>
 
     <!-- Bandeau promo -->
@@ -477,40 +538,40 @@ nav a span {
 <div class="promo2">
     <div class="carousel">
         <!-- Slide 1 -->
-        <div class="carousel-item">
-            <img src="fleursdechanvre.jpg" alt="fleursdechanvre">
+        <div class="carousel-item"data-name="Blueberry (Glasshouse)" data-price="12.45">
+            <img src="fleursdechanvre.jpg" alt="Blueberry (Glasshouse)">
             <div class="promo-details">
-                <h3>Fleurs de chanvre</h3>
+                <h3>Blueberry (Glasshouse)</h3>
                 <h3>10gr</h3>
                 <p>
-                    <span class="original-price">39,99 €</span>
-                    <span class="promo-price">29,99 €</span>
+                    <span class="original-price">14,90 €</span>
+                    <span class="promo-price">12,45 €</span>
                 </p>
                 <button>Ajouter au panier</button>
             </div>
         </div>
         <!-- Slide 2 -->
-        <div class="carousel-item">
+        <div class="carousel-item" data-name="Pack petit curieux 6gr" data-price="10.00">
             <img src="pack.jpg" alt="pack1">
             <div class="promo-details">
                 <h3>Pack petit curieux</h3>
-                <h3>10gr</h3>
+                <h3>6gr</h3>
                 <p>
-                    <span class="original-price">39,99 €</span>
-                    <span class="promo-price">29,99 €</span>
+                    <span class="original-price">11,70€</span>
+                    <span class="promo-price">10,00 €</span>
                 </p>
                 <button>Ajouter au panier</button>
             </div>
         </div>
         <!-- Slide 3 -->
-        <div class="carousel-item">
+        <div class="carousel-item"data-name="Pack grand curieux 30gr" data-price="39.90">
             <img src="pack.jpg" alt="pack2">
             <div class="promo-details">
                 <h3>Pack grand curieux</h3>
-                <h3>50gr</h3>
+                <h3>30gr</h3>
                 <p>
-                    <span class="original-price">39,99 €</span>
-                    <span class="promo-price">29,99 €</span>
+                    <span class="original-price">44,70 €</span>
+                    <span class="promo-price">39,90 €</span>
                 </p>
                 <button>Ajouter au panier</button>
             </div>
@@ -521,102 +582,109 @@ nav a span {
     <button class="carousel-control next">❯</button>
 </div>
 
-
+<div id="main-content">
+    <!-- Contenu initial ici -->
+    <div id="product-detail">
     <!-- Liste des produits -->
     <div class="products">
-        <div class="product" data-name="Fleurs de chanvre2" data-price="19.99">
-            <img src="fleursdechanvre2.jpg" alt="fleursdechanvre2">
-            <h3>fleursdechanvre2</h3>
+        <div class="product" data-name="Blueberry (Glasshouse) 2gr" data-price="3.90">
+            <li>
+                <a href="javascript:void(0);" onclick="window.location.href='Blueberry.html';">
+                    <img src="fleursdechanvre2.jpg" alt="Blueberry (Glasshouse)">
+                </a>
+            </li>
+            <h3>Blueberry (Glasshouse)</h3>
             <h3>2gr</h3>
-            <p>Prix : 19,99 €</p>
+            <p>Prix : 3,90 €</p>
             <button>Ajouter au panier</button>
         </div>
-        <div class="product" data-name="Fleurs de chanvre3" data-price="29.99">
-            <img src="fleursdechanvre2.jpg" alt="fleursdechanvre2">
-            <h3>fleursdechanvre2</h3>
+        <div class="product" data-name="Blueberry (Glasshouse) 5gr" data-price="8.90">
+            <img src="fleursdechanvre2.jpg" alt="Blueberry (Glasshouse)">
+            <h3>Blueberry (Glasshouse)</h3>
             <h3>5gr</h3>
-            <p>Prix : 29,99 €</p>
+            <p>Prix : 8,90 €</p>
             <button>Ajouter au panier</button>
         </div>
-        <div class="product" data-name="Fleurs de chanvre4" data-price="39.99">
-            <img src="fleursdechanvre2.jpg" alt="fleursdechanvre2">
-            <h3>fleursdechanvre2</h3>
+        <div class="product" data-name="Blueberry (Glasshouse) 10gr" data-price="14.90">
+            <img src="fleursdechanvre2.jpg" alt="Blueberry (Glasshouse)">
+            <h3>Blueberry (Glasshouse)</h3>
             <h3>10gr</h3>
-            <p>Prix : 39,99 €</p>
+            <p>Prix : 14,90 €</p>
             <button>Ajouter au panier</button>
         </div>
-        <div class="product" data-name="Fleurs de chanvre5" data-price="49.99">
-            <img src="fleursdechanvre2.jpg" alt="fleursdechanvre2">
-            <h3>fleursdechanvre2</h3>
+        <div class="product" data-name="Blueberry (Glasshouse) 20gr" data-price="24.90">
+            <img src="fleursdechanvre2.jpg" alt="Blueberry (Glasshouse)">
+            <h3>Blueberry (Glasshouse)</h3>
             <h3>20gr</h3>
-            <p>Prix : 49,99 €</p>
+            <p>Prix : 24,90 €</p>
             <button>Ajouter au panier</button>
         </div>
     </div>
 
     <div class="products">
-        <div class="product" data-name="Fleurs de chanvre2" data-price="19.99">
-            <img src="fleursdechanvre3.jpg" alt="fleursdechanvre3">
-            <h3>fleursdechanvre3</h3>
+        <div class="product" data-name="Gelato (Greenhouse) 2gr" data-price="3.90">
+            <img src="fleursdechanvre3.jpg" alt="Gelato (Greenhouse)">
+            <h3>Gelato (Greenhouse)</h3>
             <h3>2gr</h3>
-            <p>Prix : 19,99 €</p>
+            <p>Prix : 3,90 €</p>
             <button>Ajouter au panier</button>
         </div>
-        <div class="product" data-name="Fleurs de chanvre3" data-price="29.99">
-            <img src="fleursdechanvre3.jpg" alt="fleursdechanvre3">
-            <h3>fleursdechanvre3</h3>
+        <div class="product" data-name="Gelato (Greenhouse) 5gr" data-price="8.90">
+            <img src="fleursdechanvre3.jpg" alt="Gelato (Greenhouse)">
+            <h3>Gelato (Greenhouse)</h3>
             <h3>5gr</h3>
-            <p>Prix : 29,99 €</p>
+            <p>Prix : 8,90 €</p>
             <button>Ajouter au panier</button>
         </div>
-        <div class="product" data-name="Fleurs de chanvre4" data-price="39.99">
-            <img src="fleursdechanvre3.jpg" alt="fleursdechanvre3">
-            <h3>fleursdechanvre3</h3>
+        <div class="product" data-name="Gelato (Greenhouse) 10gr" data-price="14.90">
+            <img src="fleursdechanvre3.jpg" alt="Gelato (Greenhouse)">
+            <h3>Gelato (Greenhouse)</h3>
             <h3>10gr</h3>
-            <p>Prix : 39,99 €</p>
+            <p>Prix : 14,90 €</p>
             <button>Ajouter au panier</button>
         </div>
-        <div class="product" data-name="Fleurs de chanvre5" data-price="49.99">
-            <img src="fleursdechanvre3.jpg" alt="fleursdechanvre3">
-            <h3>fleursdechanvre3</h3>
+        <div class="product" data-name="Gelato (Greenhouse) 20gr" data-price="24.90">
+            <img src="fleursdechanvre3.jpg" alt="Gelato (Greenhouse)">
+            <h3>Gelato (Greenhouse)</h3>
             <h3>20gr</h3>
-            <p>Prix : 49,99 €</p>
+            <p>Prix : 24,90 €</p>
             <button>Ajouter au panier</button>
         </div>
     </div>
 
     <div class="products">
-        <div class="product" data-name="Fleurs de chanvre2" data-price="19.99">
-            <img src="fleursdechanvre.jpg" alt="fleursdechanvre">
-            <h3>fleursdechanvre</h3>
+        <div class="product" data-name="Firstfrost (Greenhouse) 2gr" data-price="3.90">
+            <img src="fleursdechanvre.jpg" alt="Firstfrost (Greenhouse)">
+            <h3>Firstfrost (Greenhouse)</h3>
             <h3>2gr</h3>
-            <p>Prix : 19,99 €</p>
+            <p>Prix : 3,90 €</p>
             <button>Ajouter au panier</button>
         </div>
-        <div class="product" data-name="Fleurs de chanvre3" data-price="29.99">
-            <img src="fleursdechanvre.jpg" alt="fleursdechanvre">
-            <h3>fleursdechanvre</h3>
+        <div class="product" data-name="Firstfrost (Greenhouse) 5gr" data-price="8.90">
+            <img src="fleursdechanvre.jpg" alt="Firstfrost (Greenhouse)">
+            <h3>Firstfrost (Greenhouse)</h3>
             <h3>5gr</h3>
-            <p>Prix : 29,99 €</p>
+            <p>Prix : 8,90 €</p>
             <button>Ajouter au panier</button>
         </div>
-        <div class="product" data-name="Fleurs de chanvre4" data-price="39.99">
-            <img src="fleursdechanvre.jpg" alt="fleursdechanvre">
-            <h3>fleursdechanvre</h3>
+        <div class="product" data-name="Firstfrost (Greenhouse) 10gr" data-price="14.90">
+            <img src="fleursdechanvre.jpg" alt="Firstfrost (Greenhouse)">
+            <h3>Firstfrost (Greenhouse)</h3>
             <h3>10gr</h3>
-            <p>Prix : 39,99 €</p>
+            <p>Prix : 14,90 €</p>
             <button>Ajouter au panier</button>
         </div>
-        <div class="product" data-name="Fleurs de chanvre5" data-price="49.99">
-            <img src="fleursdechanvre.jpg" alt="fleursdechanvre">
-            <h3>fleursdechanvre</h3>
+        <div class="product" data-name="Firstfrost (Greenhouse) 20gr" data-price="24.90">
+            <img src="fleursdechanvre.jpg" alt="Firstfrost (Greenhouse)">
+            <h3>Firstfrost (Greenhouse)</h3>
             <h3>20gr</h3>
-            <p>Prix : 49,99 €</p>
+            <p>Prix : 24,90 €</p>
             <button>Ajouter au panier</button>
         </div>
     </div>
 
-
+    </div>
+</div>
     <!-- Affichage du panier -->
     <div id="panier">
         <div class="cart">
@@ -631,8 +699,11 @@ nav a span {
     <div id="gpay-container" class="gpay-button-container"></div>
 
     <script>
-        // Initialisation du panier
-const cart = [];
+        // Fonction pour charger le panier depuis le localStorage
+function loadCartFromStorage() {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : []; // Si le panier est dans le localStorage, on le charge, sinon on retourne un tableau vide
+}
 
 // Fonction pour mettre à jour l'affichage du panier et récupérer le total
 function updateCartDisplay() {
@@ -671,6 +742,7 @@ function updateCartDisplay() {
 // Fonction pour supprimer un article du panier
 function removeItemFromCart(index) {
     cart.splice(index, 1); // Supprime l'élément à l'index spécifié
+    localStorage.setItem('cart', JSON.stringify(cart)); // Sauvegarde le panier dans localStorage
     updateCartDisplay(); // Met à jour l'affichage du panier après suppression
 }
 
@@ -678,17 +750,25 @@ function removeItemFromCart(index) {
 document.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', (event) => {
         // Trouve l'élément parent avec les données du produit
-        const productElement = event.target.closest('.product, .promo-item');
+        const productElement = event.target.closest('.product, .promo-item, .carousel-item');
         const productName = productElement.getAttribute('data-name');
         const productPrice = parseFloat(productElement.getAttribute('data-price'));
 
         // Ajoute le produit au panier
         cart.push({ name: productName, price: productPrice });
 
+        // Sauvegarde le panier dans localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
         // Met à jour l'affichage du panier
         updateCartDisplay();
     });
 });
+
+// Charger le panier au chargement de la page
+const cart = loadCartFromStorage();
+updateCartDisplay();
+
 
 
     </script>
