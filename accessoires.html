@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accueil - Le Chanvre d'ici</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Bandeau de contact */
+
+        .contact-info {
+        background-color: #fff;
+        color: #333;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+        /*flex-direction: column; /* Affiche les enfants en colonne */
+        text-align: right; /* Alignement du texte à droite */
+        height: auto;
+        }
+
+        .contact-info h3 {
+        margin: 0; /* Supprime les marges autour du titre */
+        font-size: 14px; /* Ajuste la taille du texte si nécessaire */
+        }
+        
+        .contact-info a {
+        margin: 0;
+        font-size: 12px; /* Réduction de la taille du lien */
+        }
+
+        /* Bandeau avec le logo */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligne les éléments au début */
+}
+
+header img {
+    height: 100px;
+    margin-right: 20px;
+    border-radius: 50%; /* Rend l'image circulaire */
+    border: 3px solid #000; /* Bordure noire */
+    object-fit: cover; /* Ajuste le contenu dans le cercle */
+}
+
+/* Pour aligner les textes à droite de la page */
+header .text-container {
+    display: flex;
+    flex-direction: column; /* Empile les textes l'un sous l'autre */
+    justify-content: center; /* Centrer verticalement les textes */
+    margin-left: auto; /* Pousse le bloc de texte complètement à droite */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+header h3 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+
+
+        /* Style du bandeau */
+.scrolling-banner {
+    width: 100%; /* Prend toute la largeur */
+    overflow: hidden; /* Cache le contenu qui dépasse */
+    background-color: #fe0202; /* Couleur de fond du bandeau */
+    border: 1px solid #333; /* Bordure pour l'apparence */
+    height: 40px; /* Hauteur du bandeau */
+    display: flex;
+    align-items: center; /* Centre verticalement le contenu */
+    position: relative;
+}
+
+/* Contenu défilant */
+.scrolling-content {
+    display: flex;
+    width: max-content; /* Permet de s'assurer que tout le texte est aligné sur une ligne */
+    animation: scroll-loop 15s linear infinite; /* Animation fluide infinie */
+}
+
+/* Éléments de texte individuels */
+.scrolling-content span {
+    flex-shrink: 0; /* Empêche les éléments de rétrécir */
+    white-space: nowrap; /* Empêche les retours à la ligne */
+    font-size: 16px;
+    padding: 0 20px; /* Espacement entre les éléments */
+    color: #333;
+}
+
+/* Animation pour faire défiler en boucle */
+@keyframes scroll-loop {
+    0% {
+        transform: translateX(100%); /* Départ hors de l'écran à droite */
+    }
+    100% {
+        transform: translateX(-100%); /* Finit hors de l'écran à gauche */
+    }
+}
+
+/* Media Query pour les écrans de moins de 768px */
+@media (max-width: 768px) {
+    .scrolling-banner {
+        height: 30px; /* Réduction de la hauteur du bandeau */
+    }
+
+    .scrolling-content span {
+        font-size: 14px; /* Réduction de la taille du texte */
+        padding: 0 10px; /* Réduction de l'espacement entre les éléments */
+    }
+
+    .scrolling-content {
+        animation: scroll-loop 15s linear infinite; /* Ralentissement du défilement */
+    }
+}
+
+
+
+
+
+        /* Menu horizontal */
+nav {
+    display: flex;
+    justify-content:  space-around; /* Alignement des éléments à gauche */
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    width: 100%;
+    box-sizing: border-box; /* Assure que tout le contenu est bien pris en compte dans la largeur */
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    padding: 0 10px; /* Ajoute de l'espace entre les éléments */
+}
+
+nav a img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+nav a span {
+    font-size: 14px;
+}
+nav li {
+    list-style-type: none; /* Supprime les puces */
+}
+
+/* Media query pour smartphone (écrans < 768px) */
+@media screen and (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne */
+        justify-content: flex-start; /* Aligne à gauche */
+        overflow-x: auto;  /* Ajoute un défilement horizontal */
+        gap: 10px;  /* Réduit l'espacement entre les produits */
+        -webkit-overflow-scrolling: touch; /* Effet de défilement fluide pour iOS */
+        padding: 10px ;
+        width: 100vw; /* Utilise toute la largeur de la fenêtre */
+        box-sizing: border-box;
+        scrollbar-width: thin; /* Évite une barre de défilement trop large */
+    }
+
+    nav a {
+        flex: 0 0 auto; /* Les éléments gardent leur taille et ne se rétrécissent pas */
+    }
+
+    nav a img {
+        width: 80px; /* Réduction de la taille des images pour les petits écrans */
+        height: 80px;
+    }
+
+    nav a span {
+        font-size: 12px; /* Réduction de la taille du texte */
+    }
+    nav li {
+    list-style-type: none; /* Supprime les puces */
+    }
+}
+
+
+        /* Bandeau promo */
+.promo {
+    background-color: orange; /* Fond orange pour le bandeau */
+    display: flex;
+    justify-content: center; /* Centre le titre horizontalement */
+    align-items: center; /* Centre le titre verticalement */
+    height: 50px; /* Hauteur du bandeau */
+    color: white; /* Couleur du texte */
+    font-size: 16px; /* Taille du texte */
+    font-weight: bold; /* Texte en gras */
+}
+
+.promo h2 {
+    margin: 0; /* Retirer les marges par défaut autour du titre */
+}
+
+/* Bandeau promo */
+.promo2 {
+    background-color: orange; /* Fond orange pour le bandeau */
+    position: relative; /* Nécessaire pour positionner les flèches */
+    overflow: hidden; /* Masque les images qui débordent */
+    height: 170px; /* Hauteur du bandeau */
+}
+
+/* Carrousel */
+.carousel {
+    display: flex;
+    transition: transform 1s ease; /* Animation fluide pour le défilement */
+    width: 300%; /* Pour trois images */
+    justify-content: center; /* Centre horizontalement tout le carrousel */
+}
+
+.carousel-item {
+    flex: 1; /* Chaque image occupe un tiers de la largeur */
+    height: 100%;
+    display: flex; /* Active Flexbox pour l'élément */
+    justify-content: center; /* Centre l'image horizontalement */
+    align-items: center; /* Centre l'image verticalement */
+}
+
+.carousel-item img {
+    width: 150px; /* L'image prend toute la largeur de l'élément */
+    height: 150px; /* Garde le ratio de l'image */
+    display: block; /* Supprime les espaces sous les images */
+}
+
+.promo-details {
+        display: flex;
+        flex-direction: column; /* Aligne le texte et le bouton verticalement */
+        }
+
+        .promo-details h3 {
+        margin: 0 0 10px 0; /* Espacement en bas du titre */
+        }
+
+        .promo-details p {
+        margin: 0 0 10px 0; /* Espacement en bas du prix */
+        }
+
+        .promo-details button {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+        }
+
+        .promo-details button:hover {
+        background-color: #218838;
+        }
+
+        /* Style du prix original barré */
+        .original-price {
+        text-decoration: line-through;
+        color: #888; /* Couleur grise pour indiquer un prix réduit */
+        margin-right: 10px;
+        }
+
+        /* Style du prix promotionnel */
+        .promo-price {
+        color: #e60000; /* Couleur rouge pour attirer l'attention */
+        font-weight: bold;
+        font-size: 1.2em; /* Augmente légèrement la taille pour le rendre plus visible */
+        }
+
+/* Boutons de navigation */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+/* Pause au survol */
+.carousel:hover {
+    animation-play-state: paused;
+}
+
+
+/* Zone de contenu */
+#main-content {
+    padding: 20px;
+}
+
+#product-list {
+    display: block;
+}
+
+/* Section de produit dynamique */
+.product-detail {
+    /*display: none;*/
+    margin-top: 20px;
+}
+
+        /* Liste des produits par défaut */
+.products {
+    display: flex;
+    flex-wrap: nowrap;  /* Empêche le retour à la ligne */
+    justify-content:  space-around;  /* Aligne les produits à gauche */
+    padding: 20px;
+    gap: 20px;
+    width: 100%;  /* S'assure que le conteneur occupe toute la largeur */
+    overflow-x: auto; /* Permet le défilement horizontal */
+    box-sizing: border-box;  /* Inclut padding et bordures dans la largeur */
+}
+
+.product {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.product h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product p {
+    color: #333;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.product button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.product button:hover {
+    background-color: #218838;
+}
+
+/* Media query pour smartphone (écrans < 768px) */
+@media screen and (max-width: 768px) {
+    .products {
+        display: flex;
+        flex-wrap: nowrap;  /* Empêche le retour à la ligne */
+        justify-content: flex-start; /* Aligne à gauche */
+        overflow-x: auto;  /* Permet le défilement horizontal */
+        gap: 10px;  /* Réduit l'espacement entre les produits */
+        padding: 10px;  /* Moins de padding sur mobile */
+        -webkit-overflow-scrolling: touch; /* Défilement fluide pour iOS */
+        width: 100vw; /* Utilise 100% de la largeur de la fenêtre de l'écran */
+        box-sizing: border-box;  /* S'assure que padding est inclus dans la largeur totale */
+    }
+
+    .product {
+        flex: 0 0 auto;  /* Fixe la taille des éléments */
+        width: 150px;  /* Réduit la largeur des produits pour mobile */
+    }
+
+    .product h3 {
+        font-size: 14px;  /* Réduit la taille du texte pour mobile */
+    }
+
+    .product p {
+        font-size: 12px;
+    }
+
+    .product button {
+        padding: 8px 12px;  /* Réduction de la taille du bouton */
+        font-size: 12px;
+    }
+}
+
+
+        /* panier */
+        .cart {
+        margin: 20px auto;
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        max-width: 300px;
+        }
+
+        .cart h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        }
+
+        #cart-list {
+        list-style-type: none;
+        padding: 0;
+        }
+
+        #cart-list li {
+        margin-bottom: 5px;
+        }
+
+        #cart-total {
+        font-weight: bold;
+        margin-top: 10px;
+        }
+
+        /* Centrer le conteneur du bouton Google Pay */
+        .gpay-button-container {
+            margin: 20px auto; /* Marge automatique pour centrer horizontalement */
+            max-width: 300px;  /* Vous pouvez ajuster la largeur selon le besoin */
+            text-align: center; /* Optionnel, mais utile pour centrer le contenu à l'intérieur */
+  }
+
+    </style>
+</head>
+<body>
+
+    <!-- Bandeau avec le contact -->
+    
+    <div class="contact-info">
+        <h3>contact : num de téléphone</h3>
+        <a href="mailto:Lechanvredici@gmail.com?subject=Demande d'information&body=nom:%0Aprénom:%0Anuméro%20de%20téléphone:">Lechanvredici@gmail.com</a>
+    </div>
+    
+
+    <!-- Bandeau avec le logo -->
+    <header>
+        <img src="logo2.jpg" alt="Logo2">
+        <div class="text-container">
+            <h1>Le Chanvre D'ici</h1>
+            <h3>Agriculteurs - Producteurs en France</h3>
+        </div>
+    </header>
+    
+
+    <!-- Bandeau avec texte défilant -->
+    <div class="scrolling-banner">
+        <div class="scrolling-content">
+            <span>- - - - Frais de port offert à partir de 30€ - - - -</span>
+            <span><a href="quisommesnous.html" class="scrolling-link">- - - - Qui sommes nous - - - -</a></span>
+            <span>- - - - Nos produits agricoles à la vente sont produits sur le territoire Français aucune revente de marchandises de l'autre bout du monde - - - -</span>
+        </div>
+    </div>
+
+
+    <!-- Menu horizontal avec catégories -->
+    <nav>
+        <li>
+            <a href="javascript:void(0);" onclick="window.location.href='index.html';">
+                <img src="fleursdechanvre.jpg" alt="Fleurs de Chanvre">
+                <span>Fleurs de Chanvre</span>
+            </a>
+        </li>
+        <li>
+            <a href="#panier">
+                <img src="panier.jpg" alt="panier">
+                <span>Panier</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="window.location.href='pollen.html';">
+                <img src="pollen.jpg" alt="pollen">
+                <span>Pollen</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="window.location.href='infusions.html';">
+                <img src="infusions.jpg" alt="infusions">
+                <span>Infusions</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="window.location.href='accessoires.html';">
+                <img src="accessoires.jpg" alt="accessoires" class="product-image">
+                <span>Accessoires</span>
+            </a>
+        </li>        
+        <li>
+            <a href="javascript:void(0);" onclick="window.location.href='graines.html';">
+                <img src="graines.jpg" alt="graines">
+                <span>Graines</span>
+            </a>
+        </li>
+    </nav>
+
+    <!-- Bandeau promo -->
+<div class="promo">
+    <h2>PROMO DU MOMENT</h2> <!-- Titre du bandeau -->
+</div>
+
+<!-- Bandeau promo avec carrousel -->
+<div class="promo2">
+    <div class="carousel">
+        <!-- Slide 1 -->
+        <div class="carousel-item"data-name="Blueberry (Glasshouse)" data-price="12.45">
+            <img src="fleursdechanvre.jpg" alt="Blueberry (Glasshouse)">
+            <div class="promo-details">
+                <h3>Blueberry (Glasshouse)</h3>
+                <h3>10gr</h3>
+                <p>
+                    <span class="original-price">14,90 €</span>
+                    <span class="promo-price">12,45 €</span>
+                </p>
+                <button>Ajouter au panier</button>
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item" data-name="Pack petit curieux 6gr" data-price="10.00">
+            <img src="pack.jpg" alt="pack1">
+            <div class="promo-details">
+                <h3>Pack petit curieux</h3>
+                <h3>6gr</h3>
+                <p>
+                    <span class="original-price">11,70€</span>
+                    <span class="promo-price">10,00 €</span>
+                </p>
+                <button>Ajouter au panier</button>
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-item"data-name="Pack grand curieux 30gr" data-price="39.90">
+            <img src="pack.jpg" alt="pack2">
+            <div class="promo-details">
+                <h3>Pack grand curieux</h3>
+                <h3>30gr</h3>
+                <p>
+                    <span class="original-price">44,70 €</span>
+                    <span class="promo-price">39,90 €</span>
+                </p>
+                <button>Ajouter au panier</button>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation buttons -->
+    <button class="carousel-control prev">❮</button>
+    <button class="carousel-control next">❯</button>
+</div>
+
+<div id="main-content">
+    <!-- Contenu initial ici -->
+    <div id="product-detail">
+    <!-- Liste des produits -->
+    <div class="products">
+        <div class="product" data-name="Blueberry (Glasshouse) 2gr" data-price="3.90">
+            <img src="accessoires.jpg" alt="Blueberry (Glasshouse)">
+            <h3>Blueberry (Glasshouse)</h3>
+            <h3>2gr</h3>
+            <p>Prix : 3,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Blueberry (Glasshouse) 5gr" data-price="8.90">
+            <img src="accessoires.jpg" alt="Blueberry (Glasshouse)">
+            <h3>Blueberry (Glasshouse)</h3>
+            <h3>5gr</h3>
+            <p>Prix : 8,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Blueberry (Glasshouse) 10gr" data-price="14.90">
+            <img src="fleursdechanvre2.jpg" alt="Blueberry (Glasshouse)">
+            <h3>Blueberry (Glasshouse)</h3>
+            <h3>10gr</h3>
+            <p>Prix : 14,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Blueberry (Glasshouse) 20gr" data-price="24.90">
+            <img src="fleursdechanvre2.jpg" alt="Blueberry (Glasshouse)">
+            <h3>Blueberry (Glasshouse)</h3>
+            <h3>20gr</h3>
+            <p>Prix : 24,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="product" data-name="Gelato (Greenhouse) 2gr" data-price="3.90">
+            <img src="fleursdechanvre3.jpg" alt="Gelato (Greenhouse)">
+            <h3>Gelato (Greenhouse)</h3>
+            <h3>2gr</h3>
+            <p>Prix : 3,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Gelato (Greenhouse) 5gr" data-price="8.90">
+            <img src="fleursdechanvre3.jpg" alt="Gelato (Greenhouse)">
+            <h3>Gelato (Greenhouse)</h3>
+            <h3>5gr</h3>
+            <p>Prix : 8,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Gelato (Greenhouse) 10gr" data-price="14.90">
+            <img src="fleursdechanvre3.jpg" alt="Gelato (Greenhouse)">
+            <h3>Gelato (Greenhouse)</h3>
+            <h3>10gr</h3>
+            <p>Prix : 14,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Gelato (Greenhouse) 20gr" data-price="24.90">
+            <img src="fleursdechanvre3.jpg" alt="Gelato (Greenhouse)">
+            <h3>Gelato (Greenhouse)</h3>
+            <h3>20gr</h3>
+            <p>Prix : 24,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="product" data-name="Firstfrost (Greenhouse) 2gr" data-price="3.90">
+            <img src="fleursdechanvre.jpg" alt="Firstfrost (Greenhouse)">
+            <h3>Firstfrost (Greenhouse)</h3>
+            <h3>2gr</h3>
+            <p>Prix : 3,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Firstfrost (Greenhouse) 5gr" data-price="8.90">
+            <img src="fleursdechanvre.jpg" alt="Firstfrost (Greenhouse)">
+            <h3>Firstfrost (Greenhouse)</h3>
+            <h3>5gr</h3>
+            <p>Prix : 8,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Firstfrost (Greenhouse) 10gr" data-price="14.90">
+            <img src="fleursdechanvre.jpg" alt="Firstfrost (Greenhouse)">
+            <h3>Firstfrost (Greenhouse)</h3>
+            <h3>10gr</h3>
+            <p>Prix : 14,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+        <div class="product" data-name="Firstfrost (Greenhouse) 20gr" data-price="24.90">
+            <img src="fleursdechanvre.jpg" alt="Firstfrost (Greenhouse)">
+            <h3>Firstfrost (Greenhouse)</h3>
+            <h3>20gr</h3>
+            <p>Prix : 24,90 €</p>
+            <button>Ajouter au panier</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+    <!-- Affichage du panier -->
+    <div id="panier">
+        <div class="cart">
+            <h2>Panier</h2>
+            <ul id="cart-list">
+                <!-- Les produits ajoutés apparaîtront ici -->
+            </ul>
+            <p id="cart-total">Total : 0,00 €</p>
+        </div>
+    </div>
+
+    <div id="gpay-container" class="gpay-button-container"></div>
+
+    <script>
+        // Fonction pour charger le panier depuis le localStorage
+function loadCartFromStorage() {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : []; // Si le panier est dans le localStorage, on le charge, sinon on retourne un tableau vide
+}
+
+// Fonction pour mettre à jour l'affichage du panier et récupérer le total
+function updateCartDisplay() {
+    const cartList = document.getElementById('cart-list');
+    const cartTotal = document.getElementById('cart-total');
+
+    // Vide la liste actuelle
+    cartList.innerHTML = '';
+
+    // Ajoute chaque produit dans le panier à la liste
+    let total = 0;
+    cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price.toFixed(2)} €`;
+
+        // Ajout d'un bouton de suppression
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Supprimer';
+        deleteButton.addEventListener('click', () => {
+            removeItemFromCart(index); // Supprime l'élément du panier
+        });
+
+        // Ajoute le bouton de suppression à l'élément de la liste
+        li.appendChild(deleteButton);
+        cartList.appendChild(li);
+        total += item.price;
+    });
+
+    // Met à jour le total
+    cartTotal.textContent = `Total : ${total.toFixed(2)} €`;
+
+    // Met à jour la variable globale pour le total du panier
+    window.cartTotalPrice = total.toFixed(2); // Store the total in a global variable
+}
+
+// Fonction pour supprimer un article du panier
+function removeItemFromCart(index) {
+    cart.splice(index, 1); // Supprime l'élément à l'index spécifié
+    localStorage.setItem('cart', JSON.stringify(cart)); // Sauvegarde le panier dans localStorage
+    updateCartDisplay(); // Met à jour l'affichage du panier après suppression
+}
+
+// Écouteur d'événements pour les boutons "Ajouter au panier"
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', (event) => {
+        // Trouve l'élément parent avec les données du produit
+        const productElement = event.target.closest('.product, .promo-item, .carousel-item');
+        const productName = productElement.getAttribute('data-name');
+        const productPrice = parseFloat(productElement.getAttribute('data-price'));
+
+        // Ajoute le produit au panier
+        cart.push({ name: productName, price: productPrice });
+
+        // Sauvegarde le panier dans localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Met à jour l'affichage du panier
+        updateCartDisplay();
+    });
+});
+
+// Charger le panier au chargement de la page
+const cart = loadCartFromStorage();
+updateCartDisplay();
+
+
+
+    </script>
+    <script type="text/javascript" src="main.js"></script>
+    <script
+      async src="https://pay.google.com/gp/p/js/pay.js"
+      onload="onGooglePayLoaded()">
+    </script>
+    
+    <script>
+   // Sélectionner les éléments nécessaires
+const prevButton = document.querySelector('.carousel-control.prev');
+const nextButton = document.querySelector('.carousel-control.next');
+const carousel = document.querySelector('.carousel');
+const carouselItems = document.querySelectorAll('.carousel-item');
+
+// Variable pour suivre l'index actuel de l'image
+let currentIndex = 0;
+
+// Fonction pour passer à la précédente image
+function moveToPrevious() {
+    if (currentIndex === 0) {
+        currentIndex = carouselItems.length - 1; // Revenir à la dernière image
+    } else {
+        currentIndex--;
+    }
+    updateCarousel();
+}
+
+// Fonction pour passer à l'image suivante
+function moveToNext() {
+    if (currentIndex === carouselItems.length - 1) {
+        currentIndex = 0; // Revenir à la première image
+    } else {
+        currentIndex++;
+    }
+    updateCarousel();
+}
+
+// Fonction pour mettre à jour le carrousel en fonction de l'index actuel
+function updateCarousel() {
+    const offset = -currentIndex * 100 / carouselItems.length; // Calcul de l'offset
+    carousel.style.transform = `translateX(${offset}%)`;
+}
+
+// Ajouter des événements aux boutons de navigation
+prevButton.addEventListener('click', moveToPrevious);
+nextButton.addEventListener('click', moveToNext);
+
+// Pause au survol
+carousel.addEventListener('mouseover', () => clearInterval(autoSlide));
+carousel.addEventListener('mouseout', () => {
+    autoSlide = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    }, slideInterval);
+});
+
+// Défilement automatique toutes les 5 secondes
+setInterval(moveToNext, 9000);
+
+</script>
+</body>
+</html>
